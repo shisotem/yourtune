@@ -23,7 +23,7 @@ function App() {
 
     try {
       const res = await axios.request(options);
-      setUrlResult(res.data);
+      setUrlResult(res.data.link);
     } catch (err) {
       console.error(err);
     }
@@ -52,9 +52,18 @@ function App() {
           </button>
         </form>
 
-        <a href="" className="download-btn">
-          Download MP3
-        </a>
+        {urlResult ? (
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href={urlResult}
+            className="download-btn"
+          >
+            Download MP3
+          </a>
+        ) : (
+          ""
+        )}
       </section>
     </div>
   );
