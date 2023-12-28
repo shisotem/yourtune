@@ -6,10 +6,9 @@ function App() {
   const inputUrlRef = useRef();
   const [urlResult, setUrlResult] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const youtubeID = youtubeParser(inputUrlRef.current.value);
-
     const options = {
       method: "GET",
       url: "https://youtube-mp3-download1.p.rapidapi.com/dl",
@@ -21,7 +20,14 @@ function App() {
         id: youtubeID,
       },
     };
-    // axios
+
+    try {
+      const res = await axios.request(options);
+      setUrlResult(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+    inputUrlRef.current.value = "";
   };
 
   return (
