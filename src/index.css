@@ -12,3 +12,73 @@ body {
   color: white;
   background: linear-gradient(45deg, #4158d0, #c850c0, #ffcc70);
 }
+
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.logo {
+  font-family: "Mogra", cursive;
+  font-weight: bold;
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15rem;
+}
+
+.content-title {
+  font-weight: 700;
+  font-size: 50px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.content-description {
+  font-weight: 400;
+  font-size: 20px;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form .form-input {
+  max-width: 500px;
+  min-width: 300px;
+  height: 38px;
+  background: white;
+  outline: none;
+  border: none;
+  text-indent: 10px;
+  font-size: 16px;
+  border-radius: 3px;
+  margin-bottom: 1rem;
+}
+
+.form .form-button {
+  width: 100px;
+  height: 30px;
+  background: #4158b0;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 3rem;
+  border-radius: 3px;
+}
+
+.download-btn {
+  color: white;
+}

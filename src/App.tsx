@@ -1,7 +1,7 @@
 function App() {
   return (
     <div className="app">
-      <span>YourTune</span>
+      <span className="logo">YourTune</span>
 
       <section className="content">
         <h1 className="content-title">YouTube to MP3, Simple!</h1>
