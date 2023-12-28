@@ -13,7 +13,7 @@ function App() {
       method: "GET",
       url: "https://youtube-mp3-download1.p.rapidapi.com/dl",
       headers: {
-        "X-RapidAPI-Key": "37b9899413msh169dd9d49b4a5abp17c66ajsn3f0aa791fb09",
+        "X-RapidAPI-Key": import.meta.env.VITE_RAPID_API_KEY,
         "X-RapidAPI-Host": "youtube-mp3-download1.p.rapidapi.com",
       },
       params: {
