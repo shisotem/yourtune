@@ -3,31 +3,33 @@ import { useRef, useState } from "react";
 import { youtubeParser } from "./utils";
 
 function App() {
-  const inputUrlRef = useRef();
+  const inputUrlRef = useRef<HTMLInputElement>(null);
   const [urlResult, setUrlResult] = useState(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const youtubeID = youtubeParser(inputUrlRef.current.value);
-    const options = {
-      method: "GET",
-      url: "https://youtube-mp3-download1.p.rapidapi.com/dl",
-      headers: {
-        "X-RapidAPI-Key": import.meta.env.VITE_RAPID_API_KEY,
-        "X-RapidAPI-Host": "youtube-mp3-download1.p.rapidapi.com",
-      },
-      params: {
-        id: youtubeID,
-      },
-    };
+    if (inputUrlRef.current) {
+      const youtubeID = youtubeParser(inputUrlRef.current.value);
+      const options = {
+        method: "GET",
+        url: "https://youtube-mp3-download1.p.rapidapi.com/dl",
+        headers: {
+          "X-RapidAPI-Key": import.meta.env.VITE_RAPID_API_KEY,
+          "X-RapidAPI-Host": "youtube-mp3-download1.p.rapidapi.com",
+        },
+        params: {
+          id: youtubeID,
+        },
+      };
 
-    try {
-      const res = await axios.request(options);
-      setUrlResult(res.data.link);
-    } catch (err) {
-      console.error(err);
+      try {
+        const res = await axios.request(options);
+        setUrlResult(res.data.link);
+      } catch (err) {
+        console.error(err);
+      }
+      inputUrlRef.current.value = "";
     }
-    inputUrlRef.current.value = "";
   };
 
   return (
