@@ -1,4 +1,13 @@
+import { useRef } from "react";
+
 function App() {
+  const inputUrlRef = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(inputUrlRef.current.value);
+  };
+
   return (
     <div className="app">
       <span className="logo">YourTune</span>
@@ -9,8 +18,9 @@ function App() {
           Transform YouTube videos into MP3 files in just a few clicks.
         </p>
 
-        <form className="form">
+        <form onSubmit={handleSubmit} className="form">
           <input
+            ref={inputUrlRef}
             placeholder="Paste a YouTube video URL link..."
             className="form-input"
             type="text"
