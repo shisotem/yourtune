@@ -32,6 +32,48 @@ function App() {
     }
   };
 
+  const [file, setFile] = useState<File | null>(null);
+  const [id, setId] = useState(null);
+  const [pitch, setPitch] = useState(0);
+  const [speed, setSpeed] = useState(0);
+
+  const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      setFile(event.target.files[0]);
+    }
+  };
+
+  const onUpload = async () => {
+    if (file) {
+      const formData = new FormData();
+      formData.append("mp3", file, file.name);
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/upload",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        setId(response.data.id);
+      } catch (err) {
+        console.error(err);
+      }
+    } else {
+      console.error("No file selected for upload");
+    }
+  };
+
+  const onChangePitchAndSpeed = async () => {
+    await axios.post(`http://localhost:3000/change/${id}`, { pitch, speed });
+  };
+
+  const onDownload = () => {
+    window.location.href = `http://localhost:3000/download/${id}`;
+  };
+
   return (
     <div className="app">
       <span className="logo">YourTune</span>
@@ -66,6 +108,30 @@ function App() {
         ) : (
           ""
         )}
+      </section>
+
+      <section>
+        <div>
+          <input type="file" onChange={onFileChange} />
+          <button onClick={onUpload}>Upload</button>
+          <input
+            type="number"
+            value={pitch}
+            onChange={(e) => setPitch(Number(e.target.value))}
+            placeholder="Pitch"
+          />
+          <input
+            type="number"
+            value={speed}
+            onChange={(e) => setSpeed(Number(e.target.value))}
+            placeholder="Speed"
+          />
+          <button onClick={onChangePitchAndSpeed}>
+            Change Pitch and Speed
+          </button>
+          <audio controls src={`http://localhost:3000/stream/${id}`} />
+          <button onClick={onDownload}>Download</button>
+        </div>
       </section>
     </div>
   );
