@@ -33,9 +33,9 @@ function App() {
   };
 
   const [file, setFile] = useState<File | null>(null);
-  const [id, setId] = useState(null);
+  const [id, setId] = useState<string | null>(null);
   const [pitch, setPitch] = useState(0);
-  const [speed, setSpeed] = useState(0);
+  const [tempo, setTempo] = useState(1);
 
   const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -66,8 +66,14 @@ function App() {
     }
   };
 
-  const onChangePitchAndSpeed = async () => {
-    await axios.post(`http://localhost:3000/change/${id}`, { pitch, speed });
+  const onChangePitchAndTempo = async () => {
+    const response = await axios.post(`http://localhost:3000/change/${id}`, {
+      pitch,
+      tempo,
+    });
+    if (response.data && response.data.id) {
+      setId(response.data.id);
+    }
   };
 
   const onDownload = () => {
@@ -122,12 +128,12 @@ function App() {
           />
           <input
             type="number"
-            value={speed}
-            onChange={(e) => setSpeed(Number(e.target.value))}
-            placeholder="Speed"
+            value={tempo}
+            onChange={(e) => setTempo(Number(e.target.value))}
+            placeholder="Tempo"
           />
-          <button onClick={onChangePitchAndSpeed}>
-            Change Pitch and Speed
+          <button onClick={onChangePitchAndTempo}>
+            Change Pitch and Tempo
           </button>
           <audio controls src={`http://localhost:3000/stream/${id}`} />
           <button onClick={onDownload}>Download</button>
