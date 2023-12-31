@@ -43,20 +43,19 @@ function App() {
     }
   };
 
+  // const baseURL = "https://api-yourtune.onrender.com";
+  const baseURL = "http://localhost:3000";
+
   const onUpload = async () => {
     if (file) {
       const formData = new FormData();
       formData.append("mp3", file, file.name);
       try {
-        const response = await axios.post(
-          "http://localhost:3000/upload",
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
+        const response = await axios.post(`${baseURL}/upload`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
         setId(response.data.id);
       } catch (err) {
         console.error(err);
@@ -67,7 +66,7 @@ function App() {
   };
 
   const onChangePitchAndTempo = async () => {
-    const response = await axios.post(`http://localhost:3000/change/${id}`, {
+    const response = await axios.post(`${baseURL}/change/${id}`, {
       pitch,
       tempo,
     });
@@ -77,7 +76,7 @@ function App() {
   };
 
   const onDownload = () => {
-    window.location.href = `http://localhost:3000/download/${id}`;
+    window.location.href = `${baseURL}/download/${id}`;
   };
 
   return (
@@ -135,7 +134,7 @@ function App() {
           <button onClick={onChangePitchAndTempo}>
             Change Pitch and Tempo
           </button>
-          <audio controls src={`http://localhost:3000/stream/${id}`} />
+          <audio controls src={`${baseURL}/stream/${id}`} />
           <button onClick={onDownload}>Download</button>
         </div>
       </section>
