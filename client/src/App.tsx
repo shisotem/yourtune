@@ -143,15 +143,21 @@ function App() {
             onChange={(e) => setTempo(Number(e.target.value))}
             placeholder="Tempo"
           />
-          <button onClick={onChangePitchAndTempo}>
-            Change Pitch and Tempo
-          </button>
           {isLoading ? (
             <div>Loading...</div>
           ) : (
             <div>
-              <audio ref={audioRef} controls src={`${baseURL}/stream/${id}`} />
-              <button onClick={onDownload}>Download</button>
+              <button onClick={onChangePitchAndTempo}>
+                Change Pitch and Tempo
+              </button>
+              <div>
+                <audio
+                  ref={audioRef}
+                  controls
+                  src={`${baseURL}/stream/${id}`}
+                />
+                <button onClick={onDownload}>Download</button>
+              </div>
             </div>
           )}
         </div>
