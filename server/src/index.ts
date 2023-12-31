@@ -47,11 +47,16 @@ app.post("/upload", upload.single("mp3"), (req, res) => {
   const id = uuidv4();
   fileMap.set(id, req.file.path);
   originalFileMap.set(id, req.file.path); // Add this line to save the original file path
-  console.log(`id: ${id}, path: ${req.file.path}`);
+  console.log(`[upload] id: ${id}, path: ${req.file.path}`);
   res.send({ id });
 });
 
 app.post("/change/:id", (req, res) => {
+  console.log(
+    `[change] id: ${req.params.id}, fileMap: ${fileMap.get(
+      req.params.id
+    )}, originalFileMap: ${originalFileMap.get(req.params.id)}`
+  );
   const { pitch, tempo } = req.body;
   const originalFilePath = originalFileMap.get(req.params.id); // Get the original file path
   if (!originalFilePath) {
@@ -79,6 +84,11 @@ app.post("/change/:id", (req, res) => {
 });
 
 app.get("/stream/:id", (req, res) => {
+  console.log(
+    `[stream] id: ${req.params.id}, fileMap: ${fileMap.get(
+      req.params.id
+    )}, originalFileMap: ${originalFileMap.get(req.params.id)}`
+  );
   const filePath = fileMap.get(req.params.id);
   if (!filePath) {
     res.status(404).send({ error: "File not found" });
@@ -90,6 +100,11 @@ app.get("/stream/:id", (req, res) => {
 });
 
 app.get("/download/:id", (req, res) => {
+  console.log(
+    `[download] id: ${req.params.id}, fileMap: ${fileMap.get(
+      req.params.id
+    )}, originalFileMap: ${originalFileMap.get(req.params.id)}`
+  );
   const filePath = fileMap.get(req.params.id);
   if (!filePath) {
     res.status(404).send({ error: "File not found" });
