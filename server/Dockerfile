@@ -10,8 +10,8 @@ COPY package*.json ./
 # Install any needed packages specified in package.json
 RUN npm install
 
-# Install sox
-RUN apt-get update && apt-get install -y sox
+# Install sox and mp3 support
+RUN apt-get update && apt-get install -y sox libsox-fmt-mp3
 
 # Bundle app source
 COPY . .
