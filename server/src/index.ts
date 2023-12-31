@@ -4,9 +4,12 @@ import { exec } from "child_process";
 import fs from "fs";
 import path from "path";
 import { v4 as uuidv4 } from "uuid";
+import cors from "cors";
 
 const app = express();
 const upload = multer({ dest: "uploads/" });
+
+app.use(cors());
 
 function scheduleFileDeletion(filePath: string, delay: number) {
   setTimeout(() => {
@@ -52,8 +55,7 @@ app.post("/change/:id", (req, res) => {
       fileMap.set(req.params.id, newFilePath);
       res.send({ id: req.params.id });
 
-      // Schedule the deletion of the old file after 1 hour
-      scheduleFileDeletion(filePath, 60 * 60 * 1000);
+      scheduleFileDeletion(filePath, 60 * 30 * 1000);
     }
   );
 });
@@ -68,5 +70,6 @@ app.get("/stream/:id", (req, res) => {
 app.get("/download/:id", (req, res) => {
   const filePath = fileMap.get(req.params.id);
   const absolutePath = path.resolve(filePath);
-  res.download(absolutePath);
+  const fileName = "yourtune.mp3";
+  res.download(absolutePath, fileName);
 });
