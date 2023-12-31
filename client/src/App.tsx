@@ -65,13 +65,22 @@ function App() {
     }
   };
 
+  const audioRef = useRef<HTMLAudioElement>(null);
+
   const onChangePitchAndTempo = async () => {
     const response = await axios.post(`${baseURL}/change/${id}`, {
       pitch,
       tempo,
     });
     if (response.data && response.data.id) {
+      console.log(`Changed pitch and tempo for ${response.data.id}`);
       setId(response.data.id);
+
+      if (response.status === 200) {
+        if (audioRef.current) {
+          audioRef.current.load();
+        }
+      }
     }
   };
 
@@ -134,7 +143,7 @@ function App() {
           <button onClick={onChangePitchAndTempo}>
             Change Pitch and Tempo
           </button>
-          <audio controls src={`${baseURL}/stream/${id}`} />
+          <audio ref={audioRef} controls src={`${baseURL}/stream/${id}`} />
           <button onClick={onDownload}>Download</button>
         </div>
       </section>
