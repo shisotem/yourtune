@@ -48,6 +48,7 @@ app.post("/upload", upload.single("mp3"), (req, res) => {
   fileMap.set(id, req.file.path);
   originalFileMap.set(id, req.file.path); // Add this line to save the original file path
   console.log(`[upload] id: ${id}, path: ${req.file.path}`);
+  scheduleFileDeletion(originalFileMap.get(id), 60 * 30 * 1000); // after 30 minutes
   res.send({ id });
 });
 
@@ -76,9 +77,8 @@ app.post("/change/:id", (req, res) => {
         return;
       }
       fileMap.set(req.params.id, newFilePath); // Set the new file path to the map
+      scheduleFileDeletion(newFilePath, 60 * 30 * 1000); // after 30 minutes
       res.send({ id: req.params.id });
-
-      scheduleFileDeletion(newFilePath, 60 * 30 * 1000); // Delete the changed file after 30 minutes
     }
   );
 });
