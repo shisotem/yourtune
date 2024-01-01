@@ -133,11 +133,11 @@ function App() {
             <div>
               {/* <input type="file" onChange={onFileChange} />
               <button onClick={onUpload}>Upload</button> */}
-              <div className="font-[sans-serif] max-w-md mx-auto mt-16 flex justify-center items-center flex-col">
+              <div className="mx-auto mt-12 flex justify-center items-center flex-col">
                 <input
                   type="file"
                   onChange={onFileChange}
-                  className="w-10/12 text-gray-400 text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded"
+                  className="text-gray-400 text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded"
                 />
                 <button onClick={onUpload} className="btn mt-4 items-center">
                   Upload
