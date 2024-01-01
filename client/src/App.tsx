@@ -109,7 +109,7 @@ function App() {
               className="form-input rounded-md border border-gray-300"
               type="text"
             />
-            <button type="submit" className="btn">
+            <button type="submit" className="btn mb-3">
               Search
             </button>
           </form>
@@ -139,7 +139,7 @@ function App() {
                   onChange={onFileChange}
                   className="overflow-hidden pr-2 text-gray-400 text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded-md"
                 />
-                <button onClick={onUpload} className="btn mt-4 items-center">
+                <button onClick={onUpload} className="btn my-4 items-center">
                   Upload
                 </button>
               </div>
@@ -259,7 +259,7 @@ function App() {
                 <label htmlFor="nights-input" className="sr-only">
                   Choose number of nights:
                 </label>
-                <div className="relative flex items-center mb-2">
+                <div className="relative flex items-center">
                   <button
                     onClick={() =>
                       setTempo((prevTempo) =>
@@ -359,7 +359,7 @@ function App() {
               <div className="flex flex-col items-center">
                 <button
                   onClick={onChangePitchAndTempo}
-                  className="btn mt-3 items-center"
+                  className="btn my-4 items-center"
                 >
                   Change
                 </button>
@@ -368,6 +368,7 @@ function App() {
                     ref={audioRef}
                     controls
                     src={id ? `${baseURL}/stream/${id}`: undefined}
+                    className="mt-1"
                   />
                   {id && (
                     <button
