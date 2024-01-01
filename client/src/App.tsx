@@ -92,7 +92,7 @@ function App() {
   };
 
   return (
-    <div>
+    <>
       <div className="app">
         <div className="flex justify-between items-center">
           <span className="logo">YourTune</span>
@@ -432,7 +432,12 @@ function App() {
           </div>
         </section>
       </div>
-    </div>
+      <footer className=" absolute bottom-0 w-full text-center py-2 px-4 text-white text-sm">
+        <p>
+          <span>&copy;</span> {new Date().getFullYear()} SHISOTEM{" "}
+        </p>
+      </footer>
+    </>
   );
 }
 
