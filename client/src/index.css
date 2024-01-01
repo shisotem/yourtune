@@ -89,6 +89,14 @@ body {
   color: white;
 }
 
+input[type="file"]::-webkit-file-upload-button {
+  background-color: #c1c2c3;
+  color: white;
+}
+input[type="file"]:hover::-webkit-file-upload-button {
+  background-color: #a9a9a9;
+}
+
 @media screen and (max-width: 600px) {
   .content {
     margin-top: 2rem;
