@@ -119,7 +119,7 @@ function App() {
           <form onSubmit={handleSubmit} className="form">
             <input
               ref={inputUrlRef}
-              placeholder="Paste a YouTube video URL link..."
+              placeholder="https://www.youtube.com/watch?v=..."
               className="form-input rounded-md border border-gray-300"
               type="text"
             />

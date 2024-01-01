@@ -67,9 +67,12 @@ body {
   color: black;
   outline: none;
   padding: 0 10px;
-  font-size: 16px;
+  font-size: 15px;
   /* border-radius: 3px; */
   margin-bottom: 1rem;
+}
+.form .form-input::placeholder {
+  color: #aaa;
 }
 
 .btn {
