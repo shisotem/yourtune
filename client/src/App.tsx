@@ -136,12 +136,18 @@ function App() {
             value={pitch}
             onChange={(e) => setPitch(Number(e.target.value))}
             placeholder="Pitch"
+            step={100}
+            min={-2400}
+            max={2400}
           />
           <input
             type="number"
             value={tempo}
             onChange={(e) => setTempo(Number(e.target.value))}
             placeholder="Tempo"
+            step={0.05}
+            min={0.05}
+            max={4}
           />
           {isLoading ? (
             <div>Loading...</div>
