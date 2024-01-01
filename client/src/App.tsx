@@ -367,7 +367,7 @@ function App() {
                   <audio
                     ref={audioRef}
                     controls
-                    src={`${baseURL}/stream/${id}`}
+                    src={id ? `${baseURL}/stream/${id}`: undefined}
                   />
                   {id && (
                     <button
