@@ -397,7 +397,7 @@ function App() {
             </div>
 
             {isLoading ? (
-              <div className="flex justify-center mt-5" aria-label="loading">
+              <div className="flex justify-center mt-6" aria-label="loading">
                 <div className="animate-ping h-2 w-2 bg-blue-500 rounded-full"></div>
                 <div className="animate-ping h-2 w-2 bg-blue-500 rounded-full mx-4"></div>
                 <div className="animate-ping h-2 w-2 bg-blue-500 rounded-full"></div>
