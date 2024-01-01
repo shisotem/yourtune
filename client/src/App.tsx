@@ -92,82 +92,101 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <span className="logo">YourTune</span>
+    <div>
+      <div className="app">
+        <span className="logo">YourTune</span>
 
-      <section className="content">
-        <h1 className="content-title">YouTube to MP3, Simple!</h1>
-        <p className="content-description">
-          Transform YouTube videos into MP3 files in just a few clicks.
-        </p>
+        <section className="content">
+          <h1 className="content-title">YouTube to MP3, Simple!</h1>
+          <p className="content-description">
+            Transform YouTube videos into MP3 files in just a few clicks.
+          </p>
 
-        <form onSubmit={handleSubmit} className="form">
-          <input
-            ref={inputUrlRef}
-            placeholder="Paste a YouTube video URL link..."
-            className="form-input"
-            type="text"
-          />
-          <button type="submit" className="form-button">
-            Search
-          </button>
-        </form>
+          <form onSubmit={handleSubmit} className="form">
+            <input
+              ref={inputUrlRef}
+              placeholder="Paste a YouTube video URL link..."
+              className="form-input"
+              type="text"
+            />
+            <button type="submit" className="btn">
+              Search
+            </button>
+          </form>
 
-        {urlResult ? (
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href={urlResult}
-            className="download-btn"
-          >
-            Download MP3
-          </a>
-        ) : (
-          ""
-        )}
-      </section>
-
-      <section>
-        <div>
-          <input type="file" onChange={onFileChange} />
-          <button onClick={onUpload}>Upload</button>
-          <input
-            type="number"
-            value={pitch}
-            onChange={(e) => setPitch(Number(e.target.value))}
-            placeholder="Pitch"
-            step={100}
-            min={-2400}
-            max={2400}
-          />
-          <input
-            type="number"
-            value={tempo}
-            onChange={(e) => setTempo(Number(e.target.value))}
-            placeholder="Tempo"
-            step={0.05}
-            min={0.05}
-            max={4}
-          />
-          {isLoading ? (
-            <div>Loading...</div>
+          {urlResult ? (
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={urlResult}
+              className="download-btn"
+            >
+              Download MP3
+            </a>
           ) : (
+            ""
+          )}
+        </section>
+
+        <section>
+          <div>
             <div>
-              <button onClick={onChangePitchAndTempo}>
-                Change Pitch and Tempo
-              </button>
-              <div>
-                <audio
-                  ref={audioRef}
-                  controls
-                  src={`${baseURL}/stream/${id}`}
+              {/* <input type="file" onChange={onFileChange} />
+              <button onClick={onUpload}>Upload</button> */}
+              <div className="font-[sans-serif] max-w-md mx-auto mt-16 flex justify-center items-center flex-col">
+                <input
+                  type="file"
+                  onChange={onFileChange}
+                  className="w-full text-gray-400 text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded"
                 />
-                <button onClick={onDownload}>Download</button>
+                <button onClick={onUpload} className="btn mt-4 items-center">
+                  Upload
+                </button>
               </div>
             </div>
-          )}
-        </div>
-      </section>
+
+            <div className="flex justify-center text-black">
+              {/* <input
+                type="text"
+                value={pitch}
+                onChange={(e) => setPitch(Number(e.target.value))}
+                placeholder="Pitch"
+                step={100}
+                min={-2400}
+                max={2400}
+              /> */}
+
+              {/* <input
+                type="number"
+                value={tempo}
+                onChange={(e) => setTempo(Number(e.target.value))}
+                placeholder="Tempo"
+                step={0.05}
+                min={0.05}
+                max={4}
+              /> */}
+            </div>
+
+            {isLoading ? (
+              <div>Loading...</div>
+            ) : (
+              <div>
+                <button onClick={onChangePitchAndTempo}>
+                  Change Pitch and Tempo
+                </button>
+                <div>
+                  <audio
+                    ref={audioRef}
+                    controls
+                    src={`${baseURL}/stream/${id}`}
+                  />
+                  <button onClick={onDownload}>Download</button>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
