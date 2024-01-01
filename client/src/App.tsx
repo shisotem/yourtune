@@ -45,10 +45,13 @@ function App() {
     }
   };
 
-  // const baseURL = "https://api-yourtune.onrender.com";
-  const baseURL = "http://localhost:3000";
+  const baseURL = "https://api-yourtune.onrender.com";
+  // const baseURL = "http://localhost:3000";
+
+  const [uploading, setUploading] = useState(false);
 
   const onUpload = async () => {
+    setUploading(true);
     if (file) {
       const formData = new FormData();
       formData.append("mp3", file, file.name);
@@ -65,6 +68,7 @@ function App() {
     } else {
       console.error("No file selected for upload");
     }
+    setUploading(false);
   };
 
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -398,7 +402,7 @@ function App() {
               </form>
             </div>
 
-            {isLoading ? (
+            {uploading || isLoading ? (
               <div className="flex justify-center mt-6" aria-label="loading">
                 <div className="animate-ping h-2 w-2 bg-blue-500 rounded-full"></div>
                 <div className="animate-ping h-2 w-2 bg-blue-500 rounded-full mx-4"></div>
