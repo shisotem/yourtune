@@ -94,7 +94,21 @@ function App() {
   return (
     <div>
       <div className="app">
-        <span className="logo">YourTune</span>
+        <div className="flex justify-between items-center">
+          <span className="logo">YourTune</span>
+          <a
+            href="https://github.com/shisotem/yourtune"
+            target="_blank"
+            rel="noopener noreferrer"
+            className=""
+          >
+            <img
+              src="/github-mark-white.png"
+              className="w-5 h-5 mt-4"
+              alt="github mark"
+            />
+          </a>
+        </div>
 
         <section className="content">
           <h1 className="content-title">YouTube to MP3, Simple!</h1>
