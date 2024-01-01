@@ -377,6 +377,7 @@ function App() {
                 <button
                   onClick={onChangePitchAndTempo}
                   className="btn my-4 items-center"
+                  disabled={!id}
                 >
                   Change
                 </button>
