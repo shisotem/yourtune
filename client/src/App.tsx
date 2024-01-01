@@ -119,9 +119,9 @@ function App() {
               target="_blank"
               rel="noreferrer"
               href={urlResult}
-              className="download-btn"
+              className="download-btn underline"
             >
-              Download MP3
+              Download Raw MP3
             </a>
           ) : (
             ""
@@ -369,12 +369,14 @@ function App() {
                     controls
                     src={`${baseURL}/stream/${id}`}
                   />
-                  <button
-                    className="mt-3 underline hover:cursor-pointer"
-                    onClick={onDownload}
-                  >
-                    Download
-                  </button>
+                  {id && (
+                    <button
+                      className="mt-3 underline hover:cursor-pointer"
+                      onClick={onDownload}
+                    >
+                      Download Tuned MP3
+                    </button>
+                  )}
                 </div>
               </div>
             )}
