@@ -137,7 +137,7 @@ function App() {
                 <input
                   type="file"
                   onChange={onFileChange}
-                  className="text-gray-400 text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded"
+                  className="overflow-hidden pr-2 text-gray-400 text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded-md"
                 />
                 <button onClick={onUpload} className="btn mt-4 items-center">
                   Upload
