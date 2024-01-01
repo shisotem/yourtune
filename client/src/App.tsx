@@ -99,7 +99,7 @@ function App() {
         <section className="content">
           <h1 className="content-title">YouTube to MP3, Simple!</h1>
           <p className="content-description">
-            Transform YouTube videos into MP3 files in just a few clicks.
+            Convert YouTube videos into Raw MP3s.
           </p>
 
           <form onSubmit={handleSubmit} className="form">
@@ -130,10 +130,13 @@ function App() {
 
         <section>
           <div>
+            <p className="content-description mt-3">
+              Tune Raw MP3s to your heart's content.
+            </p>
             <div>
               {/* <input type="file" onChange={onFileChange} />
               <button onClick={onUpload}>Upload</button> */}
-              <div className="mx-auto mt-12 flex justify-center items-center flex-col">
+              <div className="mx-auto flex justify-center items-center flex-col">
                 <input
                   type="file"
                   onChange={onFileChange}
@@ -367,7 +370,7 @@ function App() {
                   <audio
                     ref={audioRef}
                     controls
-                    src={id ? `${baseURL}/stream/${id}`: undefined}
+                    src={id ? `${baseURL}/stream/${id}` : undefined}
                     className="mt-1"
                   />
                   {id && (
