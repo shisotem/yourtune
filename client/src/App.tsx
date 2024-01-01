@@ -113,6 +113,21 @@ function App() {
         <section className="content">
           <h1 className="content-title">YouTube to MP3, Simple!</h1>
           <p className="content-description">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-check inline-block w-6 h-6 mr-1 mb-1 text-green-500"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M5 12l5 5l10 -10" />
+            </svg>
             Convert YouTube videos into Raw MP3s.
           </p>
 
@@ -145,6 +160,21 @@ function App() {
         <section>
           <div>
             <p className="content-description mt-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-check inline-block w-6 h-6 mr-1 mb-1 text-green-500"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M5 12l5 5l10 -10" />
+              </svg>
               Tune Raw MP3s to your heart's content.
             </p>
             <div>
