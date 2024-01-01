@@ -432,7 +432,7 @@ function App() {
           </div>
         </section>
       </div>
-      <footer className=" absolute bottom-0 w-full text-center py-2 px-4 text-white text-sm">
+      <footer className="static bottom-0 w-full text-center py-2 px-4 text-white text-sm">
         <p>
           <span>&copy;</span> {new Date().getFullYear()} SHISOTEM{" "}
         </p>
