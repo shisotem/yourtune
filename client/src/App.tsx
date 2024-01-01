@@ -145,7 +145,7 @@ function App() {
               </div>
             </div>
 
-            <div className="flex justify-center text-black">
+            <div className="flex justify-center text-black mt-1">
               {/* <input
                 type="text"
                 value={pitch}
@@ -165,22 +165,216 @@ function App() {
                 min={0.05}
                 max={4}
               /> */}
+
+              <form className="max-w-xs mx-auto flex flex-col items-center">
+                <label htmlFor="bedrooms-input" className="sr-only">
+                  Choose bedrooms number:
+                </label>
+                <div className="relative flex items-center mb-2">
+                  <button
+                    onClick={() =>
+                      setPitch((prevPitch) => Math.max(prevPitch - 100, -2400))
+                    }
+                    type="button"
+                    id="decrement-button"
+                    data-input-counter-decrement="bedrooms-input"
+                    className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+                  >
+                    <svg
+                      className="w-3 h-3 text-gray-900 dark:text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 18 2"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M1 1h16"
+                      />
+                    </svg>
+                  </button>
+                  <input
+                    value={pitch}
+                    onChange={(e) => setPitch(Number(e.target.value))}
+                    placeholder="Pitch"
+                    step={100}
+                    min={-2400}
+                    max={2400}
+                    type="text"
+                    id="bedrooms-input"
+                    className="bg-gray-50 border-x-0 border-gray-300 h-11 font-medium text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full pb-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    readOnly
+                    required
+                  />
+                  <div className="absolute bottom-1 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 flex items-center text-xs text-gray-400 space-x-1 rtl:space-x-reverse">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="icon icon-tabler icon-tabler-music w-3 h-3 text-gray-400"
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      stroke="currentColor"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M3 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                      <path d="M13 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                      <path d="M9 17v-13h10v13" />
+                      <path d="M9 8h10" />
+                    </svg>
+                    <span className="font-mono">Pitch</span>
+                  </div>
+                  <button
+                    onClick={() =>
+                      setPitch((prevPitch) => Math.min(prevPitch + 100, 2400))
+                    }
+                    type="button"
+                    id="increment-button"
+                    data-input-counter-increment="bedrooms-input"
+                    className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+                  >
+                    <svg
+                      className="w-3 h-3 text-gray-900 dark:text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 18 18"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 1v16M1 9h16"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                <label htmlFor="nights-input" className="sr-only">
+                  Choose number of nights:
+                </label>
+                <div className="relative flex items-center mb-2">
+                  <button
+                    onClick={() =>
+                      setTempo((prevTempo) =>
+                        Number(Math.max(prevTempo - 0.05, 0.05).toFixed(2))
+                      )
+                    }
+                    type="button"
+                    id="decrement-button"
+                    data-input-counter-decrement="nights-input"
+                    className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+                  >
+                    <svg
+                      className="w-3 h-3 text-gray-900 dark:text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 18 2"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M1 1h16"
+                      />
+                    </svg>
+                  </button>
+                  <input
+                    type="text"
+                    id="nights-input"
+                    value={tempo}
+                    onChange={(e) => setTempo(Number(e.target.value))}
+                    placeholder="Tempo"
+                    step={0.05}
+                    min={0.05}
+                    max={4}
+                    className="bg-gray-50 border-x-0 border-gray-300 h-11 font-medium text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full pb-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    readOnly
+                    required
+                  />
+                  <div className="absolute bottom-1 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 flex items-center text-xs text-gray-400 space-x-1 rtl:space-x-reverse">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="icon icon-tabler icon-tabler-brand-speedtest w-3 h-3 text-gray-400"
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      stroke="currentColor"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M5.636 19.364a9 9 0 1 1 12.728 0" />
+                      <path d="M16 9l-4 4" />
+                    </svg>
+                    <span className="font-mono">Tempo</span>
+                  </div>
+                  <button
+                    onClick={() =>
+                      setTempo((prevTempo) =>
+                        Number(Math.min(prevTempo + 0.05, 4).toFixed(2))
+                      )
+                    }
+                    type="button"
+                    id="increment-button"
+                    data-input-counter-increment="nights-input"
+                    className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+                  >
+                    <svg
+                      className="w-3 h-3 text-gray-900 dark:text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 18 18"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 1v16M1 9h16"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </form>
             </div>
 
             {isLoading ? (
-              <div>Loading...</div>
+              <div className="flex justify-center mt-5" aria-label="loading">
+                <div className="animate-ping h-2 w-2 bg-blue-500 rounded-full"></div>
+                <div className="animate-ping h-2 w-2 bg-blue-500 rounded-full mx-4"></div>
+                <div className="animate-ping h-2 w-2 bg-blue-500 rounded-full"></div>
+              </div>
             ) : (
-              <div>
-                <button onClick={onChangePitchAndTempo}>
-                  Change Pitch and Tempo
+              <div className="flex flex-col items-center">
+                <button
+                  onClick={onChangePitchAndTempo}
+                  className="btn mt-3 items-center"
+                >
+                  Change
                 </button>
-                <div>
+                <div className="flex flex-col items-center">
                   <audio
                     ref={audioRef}
                     controls
                     src={`${baseURL}/stream/${id}`}
                   />
-                  <button onClick={onDownload}>Download</button>
+                  <button
+                    className="mt-3 underline hover:cursor-pointer"
+                    onClick={onDownload}
+                  >
+                    Download
+                  </button>
                 </div>
               </div>
             )}
