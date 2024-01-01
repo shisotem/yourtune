@@ -24,7 +24,9 @@ function App() {
 
       try {
         const res = await axios.request(options);
-        setUrlResult(res.data.link);
+        setTimeout(() => {
+          setUrlResult(res.data.link);
+        }, 1000);
       } catch (err) {
         console.error(err);
       }
@@ -43,8 +45,8 @@ function App() {
     }
   };
 
-  const baseURL = "https://api-yourtune.onrender.com";
-  // const baseURL = "http://localhost:3000";
+  // const baseURL = "https://api-yourtune.onrender.com";
+  const baseURL = "http://localhost:3000";
 
   const onUpload = async () => {
     if (file) {
