@@ -111,7 +111,7 @@ function App() {
         </div>
 
         <section className="content">
-          <h1 className="content-title">YouTube to MP3, Simple!</h1>
+          <h1 className="content-title underline">YouTube to MP3, Simple!</h1>
           <p className="content-description">
             <svg
               xmlns="http://www.w3.org/2000/svg"
