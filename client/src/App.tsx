@@ -106,7 +106,7 @@ function App() {
             <input
               ref={inputUrlRef}
               placeholder="Paste a YouTube video URL link..."
-              className="form-input"
+              className="form-input rounded-md border border-gray-300"
               type="text"
             />
             <button type="submit" className="btn">
