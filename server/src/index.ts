@@ -66,7 +66,7 @@ app.post("/change/:id", (req, res) => {
   }
   const newFilePath = `${originalFilePath}_changed.mp3`;
   exec(
-    `sox ${originalFilePath} ${newFilePath} pitch ${pitch} tempo ${tempo}`,
+    `sox -G ${originalFilePath} ${newFilePath} pitch ${pitch} tempo ${tempo}`,
     (error, stdout, stderr) => {
       if (error) {
         console.log(`error: ${error.message}`);
